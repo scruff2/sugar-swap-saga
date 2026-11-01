@@ -1,5 +1,7 @@
 # Sugar Swap Saga
 
+**Play it:** https://scruff2.github.io/sugar-swap-saga/. There is a sister game that follows the Soda rules: [Soda Swap Saga](https://github.com/scruff2/soda-swap-saga).
+
 A Candy Crush–style match-3 saga game. It's a plain HTML5/JavaScript web app with no build step, and it can be installed as a full-screen offline app (PWA). It's built for the Samsung Galaxy Tab A9+ and works in landscape or portrait.
 
 ## Features
@@ -23,24 +25,53 @@ A Candy Crush–style match-3 saga game. It's a plain HTML5/JavaScript web app w
   - When you run out of moves: +5 Moves.
 - Synthesized sound effects and music, with nothing to download. All the art is drawn in code.
 
-## Play on the Tab A9+
+## Install
 
-### Option A: install as an app (recommended, works offline)
+### On an Android phone or tablet (recommended)
 
-Put the folder on any HTTPS static host, such as GitHub Pages, Netlify or Cloudflare Pages. On the tablet:
+1. Open **https://scruff2.github.io/sugar-swap-saga/** in Chrome.
+2. Tap **Install**, or use ⋮ → *Add to Home screen* → *Install*.
 
-1. Open the URL in Chrome.
-2. Open the ⋮ menu and choose **Add to Home screen**, then **Install**.
+Sugar Swap Saga installs as a full-screen app that works offline, and it updates itself when the game changes. This works on iPads and PCs too.
 
-It launches full screen like a native app and works offline after the first load.
+### Or download the APK
 
-### Option B: quick test over Wi-Fi from this PC
+1. Download the latest `.apk` from **[Releases](https://github.com/scruff2/sugar-swap-saga/releases/latest)** on the device.
+2. Open the file. If Android asks, allow your browser to **install unknown apps**, then tap **Install**.
+
+New APK versions install over the old one and keep your progress.
+
+### For development
+
+To run the game from this computer on a tablet connected over Wi-Fi debugging, serve the folder:
 
 ```bash
 python3 -m http.server 8765 --bind 0.0.0.0
 ```
 
-On the tablet (on the same Wi-Fi), open `http://<this-PC's-IP>:8765` in Chrome, then tap **Play**. The game switches to full screen. Offline install needs HTTPS (Option A).
+Then forward the port so the tablet can reach it:
+
+```bash
+adb reverse tcp:8765 tcp:8765
+```
+
+On the tablet, open `http://localhost:8765`.
+
+## Releasing a new APK
+
+Tag a version and push the tag:
+
+```bash
+git tag v1.1.0
+```
+
+```bash
+git push origin v1.1.0
+```
+
+GitHub Actions then packages the game with Capacitor, signs it, and attaches it to a new release. Bump `VERSION` in `sw.js` whenever the game files change, so installed web copies update.
+
+Signing uses two repository secrets, `ANDROID_KEYSTORE_B64` and `ANDROID_KEYSTORE_PASSWORD`. Every release must use the same key, otherwise updates won't install over existing copies.
 
 ## Development
 

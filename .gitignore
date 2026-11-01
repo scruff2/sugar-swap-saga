@@ -2,3 +2,6 @@
 node_modules/
 .DS_Store
 *.apk
+www/
+android/
+package-lock.json

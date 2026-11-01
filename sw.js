@@ -1,5 +1,5 @@
 // Offline cache. Bump VERSION when files change so tablets pick up updates.
-const VERSION = 'sugarswap-v1';
+const VERSION = 'sugarswap-v2';
 const FILES = [
   './', 'index.html', 'manifest.webmanifest', 'css/style.css', 'fonts/lilita-one.woff2',
   'js/util.js', 'js/levels.js', 'js/game.js', 'js/audio.js', 'js/render.js', 'js/main.js',

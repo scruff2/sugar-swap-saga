@@ -59,7 +59,7 @@ const App = {
     };
     requestAnimationFrame(loop);
     setInterval(() => this.updateLivesUi(), 1000);
-    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    if ('serviceWorker' in navigator && location.protocol !== 'file:' && !window.Capacitor) {
       navigator.serviceWorker.register('sw.js').catch(() => {});
     }
   },
