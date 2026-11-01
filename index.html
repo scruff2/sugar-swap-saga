@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#4a1a7a">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="description" content="A sweet match-3 saga game">
+<title>Sugar Swap Saga</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="app">
+  <section id="screen-title" class="screen active">
+    <div class="title-candies" id="title-candies"></div>
+    <h1 class="logo"><span>Sugar</span><span>Swap</span><small>Saga</small></h1>
+    <button class="btn btn-big btn-green" id="btn-play">Play</button>
+    <p class="hint-text">Best played full screen in landscape or portrait</p>
+  </section>
+
+  <section id="screen-map" class="screen">
+    <header class="topbar">
+      <div class="pill" id="lives-pill"><span class="heart">❤</span><b id="lives-n">5</b><span id="lives-t">Full</span></div>
+      <div class="pill" id="stars-pill"><span class="star-ico">★</span><b id="stars-total">0</b></div>
+      <button class="round-btn" id="btn-settings" aria-label="Settings">⚙</button>
+    </header>
+    <div id="map-scroll"><div id="map"></div></div>
+  </section>
+
+  <section id="screen-game" class="screen">
+    <aside id="hud">
+      <div class="hud-top">
+        <button class="round-btn" id="btn-pause" aria-label="Pause">❚❚</button>
+        <div class="level-badge">Level <b id="hud-level">1</b></div>
+      </div>
+      <div class="hud-card moves-card">
+        <div class="label" id="hud-moves-label">Moves</div>
+        <div class="big" id="hud-moves">20</div>
+      </div>
+      <div class="hud-card goal-card">
+        <div class="label">Goal</div>
+        <div id="hud-goal"></div>
+      </div>
+      <div class="hud-card score-card">
+        <div class="label">Score</div>
+        <div class="score" id="hud-score">0</div>
+        <div class="starbar"><div class="fill" id="hud-starfill"></div><i class="s s1">★</i><i class="s s2">★</i><i class="s s3">★</i></div>
+      </div>
+      <div class="boosters" id="hud-boosters"></div>
+    </aside>
+    <div id="board-wrap"><canvas id="board"></canvas></div>
+  </section>
+
+  <div id="banner" aria-live="polite"></div>
+  <div id="modal" class="hidden"><div class="modal-box" id="modal-box"></div></div>
+</div>
+<script src="js/util.js"></script>
+<script src="js/levels.js"></script>
+<script src="js/game.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/render.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
