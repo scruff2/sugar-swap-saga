@@ -169,7 +169,7 @@ const App = {
       const nm = document.createElement('div');
       nm.className = 'episode-name';
       nm.textContent = ep.name;
-      nm.style.bottom = (e === 0 ? bottom - 110 : 20) + 'px';
+      nm.style.bottom = (e === 0 ? 12 : 20) + 'px'; // clear of level 1's stars
       d.appendChild(nm);
       map.appendChild(d);
       // decorations
