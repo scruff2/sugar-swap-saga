@@ -18,7 +18,7 @@ for d in "${!SIZES[@]}"; do
 done
 
 find "$RES" -name 'splash.png' | while read -r f; do
-  read -r w h < <(identify -format '%w %h' "$f")
+  wh=$(identify -format '%w %h' "$f"); w=${wh% *}; h=${wh#* }
   s=$(( (w < h ? w : h) / 3 ))
   convert -size "${w}x${h}" "xc:$BG" \( icons/icon-512.png -resize "${s}x${s}" \) -gravity center -composite "$f"
 done
